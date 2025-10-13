@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+input:focus {
+  outline: none;
+  border-color: #44444445;
+}
+
+.content-light::part(background) {
+  background: #444444;
+}
+
+.content-dark::part(background) {
+  background: #dadada;
+}
+
+.toolbar-light {
+  --background: #444444 !important;
+  --color: white;
+  --border-color: #444444;
+  --border-width: 4px 0;
+  --border-style: double;
+}
+
+.toolbar-dark {
+  --background: #dadada !important;
+  --color: #444444;
+  --border-color: #444444;
+  --border-width: 4px 0;
+  --border-style: double;
+}
+
+.input-light{
+    background: #222222;
+    color: #dadada
+}
+
+.input-dark{
+    color: #222222;
+    background: #ebebeb
+}
+.more-button-visible{
+    display: block;
+}
+
+.more-button-hidden{
+    display: none
+}
+
+.no-more-label{
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+
+ion-card,.card-container{
+  padding: 0px !important
+}
+
+.card-container{
+  max-width: 600px;
+  margin: 0px auto
+}

@@ -1,0 +1,7 @@
+{
+  "name": "pocket-posts",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
