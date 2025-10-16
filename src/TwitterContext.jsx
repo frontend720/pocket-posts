@@ -6,10 +6,12 @@ const TwitterContext = createContext();
 function TwitterContextProvider({ children }) {
   const [tweet, setTweet] = useState([]);
   const [handle, setHandle] = useState();
-  const [continuationToken, setContinuationToken] = useState(null);
+  const [continuationToken, setContinuationToken] = useState();
   const [token, setToken] = useState()
   const [isLoading, setisLoading] = useState(false)
   const [results, setResults] = useState(null)
+  const [username, setUsername] = useState()
+
   function getTweets(username) {
     axios({
       method: "POST",
@@ -21,15 +23,13 @@ function TwitterContextProvider({ children }) {
       },
       data: {
         username: username,
-        limit: 40,
+        limit: 20,
       },
     })
       .then((response) => {
-        setTweet(() => response.data.results || []);
-        // console.log(response.data.results);
+        setTweet(() => response?.data?.results || []);
         setHandle(response?.data?.results?.user?.username);
         setContinuationToken(response?.data?.continuation_token);
-        // console.log(username)
         onIsLoading()
       })
       .catch((error) => {
@@ -38,19 +38,19 @@ function TwitterContextProvider({ children }) {
       onIsLoading()
   }
 
-//   console.log(continuationToken);
   function onIsLoading(){
     setisLoading(prev => !prev)
   }
-  function continueTweets(username, token) {
+
+
+  function continueTweets(username) {
     axios({
       method: "POST",
       url: "https://twitter154.p.rapidapi.com/user/tweets/continuation",
       data: {
         username: username,
-        limit: 40,
-        continuation_token: continuationToken,
-        // contination_token: token
+        continuation_token: continuationToken
+        
       },
       headers: {
         "x-rapidapi-key": import.meta.env.VITE_TWITTER_API_KEY,
@@ -62,20 +62,25 @@ function TwitterContextProvider({ children }) {
           ...prevTweets,
           ...(response.data.results || []),
         ]);
+        console.log(response.data)
         onIsLoading()
-        // console.log(response.data.results);
+        console.log(response?.data?.continuation_token);
         setContinuationToken(response.data.continuation_token);
+        console.log(username)
         setResults(response)
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error)
       });
     onIsLoading()
+    console.log(continuationToken)
   }
 
+ 
+// console.log(continuationToken)
   return (
     <TwitterContext.Provider
-      value={{ getTweets, continueTweets, tweet,  continuationToken, isLoading, results, setTweet, setResults, setContinuationToken }}
+      value={{ getTweets, continueTweets, tweet,  continuationToken, isLoading, results, setTweet, setResults, setContinuationToken, handle, username, setUsername }}
     >
       {children}
     </TwitterContext.Provider>

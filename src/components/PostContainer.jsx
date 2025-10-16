@@ -75,42 +75,6 @@ export default function PostContainer({
   const itemsRef = useRef([]);
   // Manage the ID of the currently active item
   const [activeId, setActiveId] = useState(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Find the first intersecting entry from the top of the list
-        const firstIntersectingEntry = entries.find(
-          (entry) => entry.isIntersecting
-        );
-
-        if (firstIntersectingEntry) {
-          // Set the active ID to the ID of the first intersecting item
-          setActiveId(firstIntersectingEntry.target.dataset.id);
-        } else {
-          // If no items are intersecting, clear the active ID
-          setActiveId(null);
-        }
-      },
-      {
-        root: null, // Use the viewport as the root
-        rootMargin: "0px",
-        threshold: 0.5, // Trigger when 50% of the element is visible
-      }
-    );
-
-    // Observe all the item elements
-    itemsRef.current.forEach((item) => {
-      if (item) {
-        observer.observe(item);
-      }
-    });
-
-    // Clean up observer on unmount
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
   return (
     <Card
       
