@@ -10,6 +10,7 @@ export default defineConfig({
     react(),
     legacy()
   ],
+  base: process.env.VITE_BASE_PATH || "/pocket-posts",
   test: {
     globals: true,
     environment: 'jsdom',

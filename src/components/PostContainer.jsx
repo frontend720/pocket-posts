@@ -103,6 +103,7 @@ export default function PostContainer({
             style={player_visibility}
             playbackRate={playbackRate[rate]}
             loop
+            preload="true"
             
           />
           <MediaControlBar className="control-bar" style={media_bar_visibility}>

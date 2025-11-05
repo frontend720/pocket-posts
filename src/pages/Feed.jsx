@@ -162,7 +162,6 @@ const Feed = () => {
           }
         >
           <label style={theme ? {color: "#222222"} : {color: "#dadada"}} htmlFor="">
-
           {isLoading ? "Loading" : "More"}
           </label>
         </MoreButton>

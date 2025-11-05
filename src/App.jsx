@@ -55,6 +55,9 @@ const App = () => {
   const { theme } = useContext(ThemeContext);
   const { auth_id } = useContext(AuthenticationContext);
 
+  
+
+
   useEffect(() => {
     const hideStatusBar = async () => {
       await StatusBar.hide();

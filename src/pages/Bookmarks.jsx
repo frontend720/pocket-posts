@@ -95,10 +95,6 @@ const Bookmarks = () => {
     setSeek(0);
   }, [filter, collectionArr.length]);
 
-  function deleteSavedMedia() {
-    deleteMedia(sortedCollection[seek]?.timestamp);
-    modalChange();
-  }
 
   useEffect(() => {
     modalChange()
@@ -157,7 +153,8 @@ const Bookmarks = () => {
               <ReactPlayer
                 slot="media"
                 width="100vw"
-                height="500px"
+                // height="500px"
+                height="100vh"
                 src={sortedCollection[seek]?.post}
                 ref={reactPlayerRef}
                 onReady={handlePlayerReady}
