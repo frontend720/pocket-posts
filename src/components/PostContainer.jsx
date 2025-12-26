@@ -50,7 +50,8 @@ export default function PostContainer({
   visibleId,
   index,
   pic_visibility,
-  height
+  height,
+  loop,
 }) {
   const { theme } = useContext(ThemeContext);
   const mediaControllerRef = useRef(null);
@@ -77,10 +78,8 @@ export default function PostContainer({
   const [activeId, setActiveId] = useState(null);
   return (
     <Card
-      
       className={theme ? "card-dark" : "card-light"}
       style={wrapper_visibility}
-      
     >
       <div className="social-card-header">
         <div>
@@ -102,9 +101,15 @@ export default function PostContainer({
             onReady={handlePlayerReady}
             style={player_visibility}
             playbackRate={playbackRate[rate]}
-            loop
+            loop={loop}
             preload="true"
-            
+            config={{
+              file: {
+                attributes: {
+                  referrerPolicy: "no-referrer",
+                },
+              },
+            }}
           />
           <MediaControlBar className="control-bar" style={media_bar_visibility}>
             <MediaPlayButton />

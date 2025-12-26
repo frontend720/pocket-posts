@@ -37,7 +37,7 @@ const Bookmarks = () => {
   const [auto, setAuto] = useState(false);
   const [filter, setFilter] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
-  const [deleteModal, setDeleteModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(true);
   function modalChange() {
     setDeleteModal((prev) => !prev);
   }

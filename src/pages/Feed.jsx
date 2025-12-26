@@ -62,7 +62,12 @@ const Feed = () => {
     setResults(null)
     setContinuationToken(null)
     setUsername("")
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
   }
+
 
   return (
     <IonPage>
@@ -77,6 +82,11 @@ const Feed = () => {
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              onKeyDown={(e) => {
+                if(e.key === "Enter"){
+                  getTweets(username.toLocaleLowerCase().trim())
+                }
+              }}
               placeholder="Search User"
               className={theme ? "input-dark" : "input-light"}
             />
@@ -149,6 +159,7 @@ const Feed = () => {
                     }
               }
               save_text={savedText}
+              loop={tweet.extended_entities?.media?.map((media) => media?.video_info?.duration_millis) < 60000 ? true : false}
             />
           </div>
         ))}

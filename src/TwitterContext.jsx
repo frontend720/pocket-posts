@@ -3,6 +3,8 @@ import axios from "axios";
 
 const TwitterContext = createContext();
 
+axios.interceptors.request.use()
+
 function TwitterContextProvider({ children }) {
   const [tweet, setTweet] = useState([]);
   const [handle, setHandle] = useState();
@@ -25,6 +27,7 @@ function TwitterContextProvider({ children }) {
         username: username,
         limit: 20,
       },
+      referrerPolicy: "no-referrer",
     })
       .then((response) => {
         setTweet(() => response?.data?.results || []);

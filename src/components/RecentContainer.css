@@ -23,5 +23,15 @@
 
 .recent-item {
   line-height: 36px;
-  font-size: 20px;
+  font-size: 24px;
+  padding: 8px;
+  width: 100vw;
+  text-align: center;
+}
+
+.recent-item:nth-child(odd){
+  background: rgba(0, 0, 0, 0.487);
+  width: 100vw;
+  text-align: center;
+  padding: 8px
 }

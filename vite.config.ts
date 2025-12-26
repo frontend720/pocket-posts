@@ -10,7 +10,8 @@ export default defineConfig({
     react(),
     legacy()
   ],
-  base: process.env.VITE_BASE_PATH || "/pocket-posts",
+  base: process.env.VITE_BASE_PATH || "/pocket-posts", // vercel
+  // base: "/",
   test: {
     globals: true,
     environment: 'jsdom',

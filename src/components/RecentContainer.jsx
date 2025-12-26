@@ -33,13 +33,13 @@ export default function RecentContainer({ visible, onRecentUserClick }) {
           className="recent-container"
         >
           {flatUsernameArray?.map((users) => (
-            <label
+            <div
               className="recent-item"
               key={users}
               onClick={() => onRecentUserClick(users)}
             >
-              {users}
-            </label>
+              <label key={users}>{users}</label>
+            </div>
           ))}
         </div>
       </div>
